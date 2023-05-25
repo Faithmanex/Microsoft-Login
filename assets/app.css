@@ -379,8 +379,7 @@ img{
     
     .auth-wrapper{
 
-        box-shadow: none !important;
-
+        
         padding: 24px !important;
 
         width: 95% !important;
@@ -392,11 +391,13 @@ img{
     
         .opts{
 
-        box-shadow: none !important;
+        
 
 
 
-        border: 0.4px solid #999;
+
+        border: 0.4px solid black
+;
 
 
 
