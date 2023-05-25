@@ -7,7 +7,8 @@
 
 html,
 body {
-    background-color: #e2e5d3;
+    background: rgb(255,236,236);
+background: linear-gradient(141deg, rgba(255,236,236,1) 0%, rgba(223,237,240,1) 49%, rgba(255,237,237,1) 100%);
     color: #1b1b1b;
 }
 
@@ -542,7 +543,7 @@ img{
     --tw-ordinal: ;
     --tw-slashed-zero: ;
     --tw-numeric-figure: ;
-    --tw-numeric-spacing: ;
+    --tw-numeric-spacing: ;:L>~
     --tw-numeric-fraction: ;
     --tw-ring-inset: ;
     --tw-ring-offset-width: 0px;
@@ -580,3 +581,6 @@ img{
     margin-right: auto;
     animation: fadeIn 1s;
 }
+
+
+

