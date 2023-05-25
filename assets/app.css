@@ -378,6 +378,7 @@ img{
     */
     .footer{
         justify-content: start;
+        color: white;
     }
 }
 :root {
