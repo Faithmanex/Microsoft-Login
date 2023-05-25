@@ -376,6 +376,18 @@ img{
         margin: 12% auto !important;
     }
     */
+    
+    .auth-wrapper{
+
+        box-shadow: none !important;
+
+        padding: 24px !important;
+
+        width: 95% !important;
+
+        max-width: 95% !important;
+
+    }
     .footer{
         justify-content: start;
         color: white;
